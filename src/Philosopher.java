@@ -32,14 +32,22 @@ public class Philosopher extends Thread{
 			System.out.println("Philosopher "+id+" thinks for "+think+" time units.");
 			sleepCatch(think);
 			if(rHanded){
+				System.out.println("Philosopher "+id+" goes for the right fork.");
 				right.acquire(); // Get right fork
+				System.out.println("Philosopher "+id+" has the right fork.");
 				Thread.yield();  // Yield to another thread
+				System.out.println("Philosopher "+id+" goes for the left fork.");
 				left.acquire();  // Get left fork
+				System.out.println("Philosopher "+id+" has the left fork.");
 				Thread.yield();  // Yield to another thread
 			}else{
+				System.out.println("Philosopher "+id+" goes for the left fork.");
 				left.acquire();  // Get left fork
+				System.out.println("Philosopher "+id+" has the left fork.");
 				Thread.yield();  // Yield to another thread
+				System.out.println("Philosopher "+id+" goes for the right fork.");
 				right.acquire(); // Get right fork
+				System.out.println("Philosopher "+id+" has the right fork.");
 				Thread.yield();  // Yield to another thread			
 			}
 			long eat = getTime(eatMillis);

@@ -13,7 +13,15 @@ public class Fork implements IFork{
      * A philosopher (attempts to) acquire the fork.
      */
     public synchronized void acquire(){
-    	this.allocated = true;
+    	boolean needsFork = true;
+    	
+    	while(needsFork){
+    		synchronized(this){
+    			if(this.allocated == false)
+    				this.allocated = true;
+    			needsFork = false;
+			}
+    	}
     }
 
     /*
