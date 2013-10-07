@@ -20,7 +20,7 @@ public class Driver {
 		}else{
 			np = 4;
 			nt = 10;
-			tm = 0;
+			tm = 500;
 			em = 0;
 		}
 		
@@ -37,7 +37,7 @@ public class Driver {
 		}
 		
 		for(Philosopher p : Phil){
-			p.run();
+			p.start();
 		}
 	}
 }
