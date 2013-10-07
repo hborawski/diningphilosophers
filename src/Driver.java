@@ -15,15 +15,18 @@ public class Driver {
 		
 		ArrayList<Philosopher> Phil = new ArrayList<Philosopher>();
 		
-		Fork LFork = new Fork();
-		Fork RFork = new Fork();
-		
-		
-		for(int i = 0; i < np; i++){
-			Philosopher p = new Philosopher(i,LFork, RFork,true,nt,tm,em);
+		Fork[] forks = new Fork[np-1];
+		for(int f = 0; f < np; f++){
+			forks[f] = new Fork();
 		}
 		
-		Philosopher p = new Philosopher(1,new Fork(), new Fork(),true,2,(long)500, (long)500);
-		p.run();
+		for(int i = 0; i < np; i++){
+			Philosopher p = new Philosopher(i,forks[i], forks[(np+i-1)%np],true,nt,tm,em);
+			Phil.add(p);
+		}
+		
+		for(Philosopher p : Phil){
+			p.run();
+		}
 	}
 }
