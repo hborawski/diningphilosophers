@@ -63,7 +63,12 @@ public class Philosopher extends Thread{
 	 * @return random long
 	 */
 	private long getTime(long millis){
-		int r = random.nextInt((int)millis);
+		int r;
+		if(millis != 0){
+			r = random.nextInt((int)millis);
+		}else{
+			r = 0;
+		}
 		return (long)r;
 	}
 	

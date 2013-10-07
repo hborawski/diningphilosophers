@@ -8,14 +8,25 @@ import java.util.ArrayList;
 public class Driver {
 	
 	public static void main(String[] args){
-		int np = Integer.parseInt(args[0]);
-		int nt = Integer.parseInt(args[1]);
-		int tm = Integer.parseInt(args[2]);
-		int em = Integer.parseInt(args[3]);
+		int np;
+		int nt;
+		int tm;
+		int em;
+		if(args.length ==4){
+			np = Integer.parseInt(args[0]);
+			nt = Integer.parseInt(args[1]);
+			tm = Integer.parseInt(args[2]);
+			em = Integer.parseInt(args[3]);
+		}else{
+			np = 4;
+			nt = 10;
+			tm = 0;
+			em = 0;
+		}
 		
 		ArrayList<Philosopher> Phil = new ArrayList<Philosopher>();
 		
-		Fork[] forks = new Fork[np-1];
+		Fork[] forks = new Fork[np];
 		for(int f = 0; f < np; f++){
 			forks[f] = new Fork();
 		}
