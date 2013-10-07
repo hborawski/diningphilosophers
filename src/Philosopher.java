@@ -52,6 +52,7 @@ public class Philosopher extends Thread{
 			}
 			long eat = getTime(eatMillis);
 			System.out.println("Philosopher "+id+" eats for "+eat+" time units.");
+			sleepCatch(eat);
 			right.release(); // Release right fork
 			left.release();  // Release left fork
 		}

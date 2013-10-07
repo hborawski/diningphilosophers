@@ -17,14 +17,20 @@ public class Driver {
 			nt = Integer.parseInt(args[1]);
 			tm = Integer.parseInt(args[2]);
 			em = Integer.parseInt(args[3]);
+		} else if(args.length == 5) {
+			np = Integer.parseInt(args[1]);
+			nt = Integer.parseInt(args[2]);
+			tm = Integer.parseInt(args[3]);
+			em = Integer.parseInt(args[4]);
 		}else{
 			np = 4;
 			nt = 10;
-			tm = 500;
+			tm = 0;
 			em = 0;
 		}
 		
 		ArrayList<Philosopher> Phil = new ArrayList<Philosopher>();
+		Philosopher singlePhil;
 		
 		Fork[] forks = new Fork[np];
 		for(int f = 0; f < np; f++){
@@ -32,12 +38,16 @@ public class Driver {
 		}
 		
 		for(int i = 0; i < np; i++){
-			Philosopher p = new Philosopher(i,forks[i], forks[(np+i-1)%np],true,nt,tm,em);
-			Phil.add(p);
+			if(args.length != 5 || ((i%2) == 0)){
+				singlePhil = new Philosopher(i,forks[i], forks[(np+i-1)%np],true,nt,tm,em);
+			} else {
+				singlePhil = new Philosopher(i,forks[i], forks[(np+i-1)%np],false,nt,tm,em);
+			}
+			Phil.add(singlePhil);
 		}
 		
-		for(Philosopher p : Phil){
-			p.start();
+		for(Philosopher P : Phil){
+			P.start();
 		}
 	}
 }
